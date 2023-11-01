@@ -6,10 +6,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 from langchain.llms.bedrock import Bedrock
 
-
-
-
-
 def get_llm():
     
     model_kwargs = { #AI21
@@ -30,21 +26,6 @@ def get_llm():
         model_kwargs=model_kwargs) #configure the properties for Claude
     
     return llm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def get_index(): #creates and returns an in-memory vector store to be used in the application
     
@@ -73,18 +54,6 @@ def get_index(): #creates and returns an in-memory vector store to be used in th
     index_from_loader = index_creator.from_loaders([loader]) #create an vector store index from the loaded PDF
     
     return index_from_loader #return the index to be cached by the client app
-
-
-
-
-
-
-
-
-
-
-
-
 
 def get_rag_response(index, question): #rag client function
     
