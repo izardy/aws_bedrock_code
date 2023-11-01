@@ -9,8 +9,6 @@ from langchain.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 
-
-
 def get_llm():
         
     model_kwargs =  { #AI21
@@ -31,9 +29,6 @@ def get_llm():
         model_kwargs=model_kwargs) #configure the properties for Claude
     
     return llm
-
-
-
 
 def get_index(): #creates and returns an in-memory vector store to be used in the application
     
@@ -63,17 +58,11 @@ def get_index(): #creates and returns an in-memory vector store to be used in th
     
     return index_from_loader #return the index to be cached by the client app
 
-
-
-
 def get_memory(): #create memory for this chat session
     
     memory = ConversationBufferWindowMemory(memory_key="chat_history", return_messages=True) #Maintains a history of previous messages
     
     return memory
-
-
-
 
 def get_rag_chat_response(input_text, memory, index): #chat client function
     
@@ -84,8 +73,4 @@ def get_rag_chat_response(input_text, memory, index): #chat client function
     chat_response = conversation_with_retrieval({"question": input_text}) #pass the user message, history, and knowledge to the model
     
     return chat_response['answer']
-
-
-
-
 
